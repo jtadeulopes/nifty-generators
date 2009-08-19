@@ -49,7 +49,7 @@ class NiftyScaffoldGenerator < Rails::Generator::Base
           m.migration_template "migration.rb", "db/migrate", :migration_file_name => "create_#{plural_name}"
         end
         
-        if rspec?
+        if rspec? || remarkable?
           m.directory "spec/models"
           m.template "tests/#{test_framework}/model.rb", "spec/models/#{singular_name}_spec.rb"
           m.directory "spec/fixtures"
@@ -82,7 +82,7 @@ class NiftyScaffoldGenerator < Rails::Generator::Base
       
         m.route_resources plural_name
         
-        if rspec?
+        if rspec? || remarkable?
           m.directory "spec/controllers"
           m.template "tests/#{test_framework}/controller.rb", "spec/controllers/#{plural_name}_controller_spec.rb"
         else
