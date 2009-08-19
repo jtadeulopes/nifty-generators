@@ -489,6 +489,13 @@ class TestNiftyScaffoldGenerator < Test::Unit::TestCase
         
         should_generate_file "spec/models/line_item_spec.rb"
       end
+
+      context "generator with remarkable specified" do
+        rails_generator :nifty_scaffold, "line_item", "name:string", :test_framework => :remarkable
+        
+        should_generate_file "spec/models/line_item_spec.rb"
+        should_generate_file "spec/controllers/line_items_controller_spec.rb"
+      end
       
       context "generator with shoulda specified" do
         rails_generator :nifty_scaffold, "line_item", "name:string", :test_framework => :shoulda

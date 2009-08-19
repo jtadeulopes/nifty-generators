@@ -184,6 +184,10 @@ class NiftyScaffoldGenerator < Rails::Generator::Base
   def rspec?
     test_framework == :rspec
   end
+
+  def remarkable?
+    test_framework == :remarkable
+  end
   
 protected
   
@@ -210,6 +214,7 @@ protected
     opt.on("--haml", "Generate HAML views instead of ERB.") { |v| options[:haml] = v }
     opt.on("--testunit", "Use test/unit for test files.") { options[:test_framework] = :testunit }
     opt.on("--rspec", "Use RSpec for test files.") { options[:test_framework] = :rspec }
+    opt.on("--remarkable", "Use Remarkable for test files.") { options[:test_framework] = :remarkable }
     opt.on("--shoulda", "Use Shoulda for test files.") { options[:test_framework] = :shoulda }
   end
   
